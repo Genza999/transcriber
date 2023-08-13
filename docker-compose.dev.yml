@@ -1,0 +1,71 @@
+version: "3.9"
+services:
+  web:
+    build: .
+    environment:
+      - DJANGO_SETTINGS_MODULE=transcriber.settings
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
+    expose:
+      - "9000"
+    command: bash -c "python manage.py migrate && gunicorn transcriber.wsgi --bind 0.0.0.0:9000 --workers 3 --threads 3"
+    volumes:
+      - .:/app
+      - static_volume:/app/staticfiles
+    depends_on:
+      - db
+  nginx:
+    build: ./nginx
+    volumes:
+      - static_volume:/app/staticfiles
+    ports:
+      - "80:80"
+    depends_on:
+      - web
+      - db
+  db:
+    image: postgres
+    restart: always
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file: .env
+  redis:
+    image: redis:alpine
+    restart: always
+    expose:
+      - "6379"
+    ports:
+      - "6379:6379"
+  celery:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    restart: always
+    environment:
+      - DJANGO_SETTINGS_MODULE=transcriber.settings
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
+    volumes:
+      - .:/app
+      - static_volume:/app/staticfiles
+    depends_on:
+      - web
+      - redis
+    links:
+        - redis:redis
+    command: ["celery", "-A", "transcriber", "worker", "-l", "info", "-E"]
+  flower:
+    image: mher/flower
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/2
+    volumes:
+      - .:/app
+    depends_on:
+      - redis
+      - celery
+    ports:
+      - 5555:5555
+
+volumes:
+  static_volume:
+  postgres_data:

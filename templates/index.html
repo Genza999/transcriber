@@ -1,0 +1,195 @@
+ <html>
+
+    <head>
+        <meta charset="utf-8"/>
+        <title>Transcibe Video</title>
+
+        <!-- Google web fonts -->
+        <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700" rel='stylesheet' />
+
+        <!-- The main CSS file -->
+        <link rel="stylesheet" href="static/css/index.css">
+    </head>
+
+    <body>
+
+	<div id="app" class="section">
+        <h1 class="title">The most Secure Transciber</h1>
+		<div class="container">
+            <div class="card-3d-wrap mx-auto">
+                <div class="card-3d-wrapper">
+                    <div class="card-front">
+                        <div class="center-wrap">
+                                <h4 class="mb-4 pb-3">Transcibe your Youtube Video</h4>
+                                <form v-if="!visible" @submit="sendLink($event)" class="form">
+                                    <input type="email" class="form-style" v-model="email" placeholder="Your Email">
+                                    <input type="url" class="form-style" v-model="link" placeholder="Youtube Link">
+                                    <select class="form-style" name="languages" id="languages" v-model="language">
+                                        <option value="en">english</option>
+                                        <option value="af">afrikaans</option>
+                                        <option value="sq">albanian</option>
+                                        <option value="am">amharic</option>
+                                        <option value="ar">arabic</option>
+                                        <option value="hy">armenian</option>
+                                        <option value="az">azerbaijani</option>
+                                        <option value="eu">basque</option>
+                                        <option value="be">belarusian</option>
+                                        <option value="bn">bengali</option>
+                                        <option value="bs">bosnian</option>
+                                        <option value="bg">bulgarian</option>
+                                        <option value="ca">catalan</option>
+                                        <option value="ceb">cebuano</option>
+                                        <option value="ny">chichewa</option>
+                                        <option value="zh-cn">chinese (simplified)</option>
+                                        <option value="zh-tw">chinese (traditional)</option>
+                                        <option value="co">corsican</option>
+                                        <option value="hr">croatian</option>
+                                        <option value="cs">czech</option>
+                                        <option value="da">danish</option>
+                                        <option value="nl">dutch</option>
+                                        <option value="eo">esperanto</option>
+                                        <option value="et">estonian</option>
+                                        <option value="tl">filipino</option>
+                                        <option value="fi">finnish</option>
+                                        <option value="fr">french</option>
+                                        <option value="fy">frisian</option>
+                                        <option value="gl">galician</option>
+                                        <option value="ka">georgian</option>
+                                        <option value="de">german</option>
+                                        <option value="el">greek</option>
+                                        <option value="gu">gujarati</option>
+                                        <option value="ht">haitian creole</option>
+                                        <option value="ha">hausa</option>
+                                        <option value="haw">hawaiian</option>
+                                        <option value="iw">hebrew</option>
+                                        <option value="he">hebrew</option>
+                                        <option value="hi">hindi</option>
+                                        <option value="hmn">hmong</option>
+                                        <option value="hu">hungarian</option>
+                                        <option value="is">icelandic</option>
+                                        <option value="ig">igbo</option>
+                                        <option value="id">indonesian</option>
+                                        <option value="ga">irish</option>
+                                        <option value="it">italian</option>
+                                        <option value="ja">japanese</option>
+                                        <option value="jw">javanese</option>
+                                        <option value="kn">kannada</option>
+                                        <option value="kk">kazakh</option>
+                                        <option value="km">khmer</option>
+                                        <option value="ko">korean</option>
+                                        <option value="ku">kurdish (kurmanji)</option>
+                                        <option value="ky">kyrgyz</option>
+                                        <option value="lo">lao</option>
+                                        <option value="la">latin</option>
+                                        <option value="lv">latvian</option>
+                                        <option value="lt">lithuanian</option>
+                                        <option value="lb">luxembourgish</option>
+                                        <option value="mk">macedonian</option>
+                                        <option value="mg">malagasy</option>
+                                        <option value="ms">malay</option>
+                                        <option value="ml">malayalam</option>
+                                        <option value="mt">maltese</option>
+                                        <option value="mi">maori</option>
+                                        <option value="mr">marathi</option>
+                                        <option value="mn">mongolian</option>
+                                        <option value="my">myanmar (burmese)</option>
+                                        <option value="ne">nepali</option>
+                                        <option value="no">norwegian</option>
+                                        <option value="or">odia</option>
+                                        <option value="ps">pashto</option>
+                                        <option value="fa">persian</option>
+                                        <option value="pl">polish</option>
+                                        <option value="pt">portuguese</option>
+                                        <option value="pa">punjabi</option>
+                                        <option value="ro">romanian</option>
+                                        <option value="ru">russian</option>
+                                        <option value="sm">samoan</option>
+                                        <option value="gd">scots gaelic</option>
+                                        <option value="sr">serbian</option>
+                                        <option value="st">sesotho</option>
+                                        <option value="sn">shona</option>
+                                        <option value="sd">sindhi</option>
+                                        <option value="si">sinhala</option>
+                                        <option value="sk">slovak</option>
+                                        <option value="sl">slovenian</option>
+                                        <option value="so">somali</option>
+                                        <option value="es">spanish</option>
+                                        <option value="su">sundanese</option>
+                                        <option value="sw">swahili</option>
+                                        <option value="sv">swedish</option>
+                                        <option value="tg">tajik</option>
+                                        <option value="ta">tamil</option>
+                                        <option value="te">telugu</option>
+                                        <option value="th">thai</option>
+                                        <option value="tr">turkish</option>
+                                        <option value="uk">ukrainian</option>
+                                        <option value="ur">urdu</option>
+                                        <option value="ug">uyghur</option>
+                                        <option value="uz">uzbek</option>
+                                        <option value="vi">vietnamese</option>
+                                        <option value="cy">welsh</option>
+                                        <option value="xh">xhosa</option>
+                                        <option value="yi">yiddish</option>
+                                        <option value="yo">yoruba</option>
+                                        <option value="zu">zulu</option>> 
+                                    </select>
+                                    <button type="submit" class="btn mt-4">Download</button>
+                                </form>
+                                <div v-if="visible">
+                                    <h3 class="success">Super!! You will receive an email with the transcription shortly</h3>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+	    </div>
+	</div>
+
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
+        <script>
+
+            const client = axios.create({
+                baseURL: '',
+                timeout: 5000
+            });
+            let app = Vue.createApp({
+                data(){
+                    return {
+                        email: "",
+                        link: "",
+                        language: "en",
+                        visible: false
+                    }
+                },
+                methods : {
+                    sendLink(event){
+                        event.preventDefault();
+
+                        let csrftoken = Cookies.get("csrftoken");
+                        let data = new FormData()
+                        data.append("email", this.email)
+                        data.append("link", this.link)
+                        data.append("language", this.language)
+                        
+                        client.post(
+                            `/api/v1/transcribe`,
+                            data,
+                            {
+                                headers: {"X-CSRFToken": csrftoken}
+                            }
+                        )
+                        .then(response => {
+                            console.log("response got", response)
+                            this.visible = !this.visible
+                        })
+                    }
+                }
+            })
+
+            app.mount("#app")
+
+        </script>
+    </body>
+</html>

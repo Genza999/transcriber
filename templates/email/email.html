@@ -1,0 +1,30 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Hey, Your transcription has arrived.</h3>
+
+    <b>Youtube Video Title: </b>{{ title|safe }}<br>
+    <b>Youtube Link: </b>{{ link|safe }}<br>
+    <b>Transcript language: </b>{{ language|safe }}<br>
+    <b>Transcript: </b><br>
+    
+    <hr style="background: #efefef; border: #efefef; height: 2px" />
+    {{ text|safe }}
+    <hr style="background: #efefef; border: #efefef; height: 2px" />
+
+    <b><p>
+    Visit us again for the swiftest Youtube Video Transcriber.<br>
+
+    Best regards,<br>
+    Transcriber team
+    </p></b>
+</body>
+</html>

@@ -91,7 +91,7 @@ DATABASES = {
     "default": {
         "ENGINE": env("ENGINE", default="django.db.backends.postgresql_psycopg2"),
         "HOST": env("POSTGRES_HOST"),
-        "NAME": env("POSTGRES_NAME"),
+        "NAME": env("POSTGRES_DB"),
         "USER": env("POSTGRES_USER"),
         "PASSWORD": env("POSTGRES_PASSWORD"),
         "PORT": int(env("POSTGRES_PORT")),

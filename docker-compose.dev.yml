@@ -8,7 +8,7 @@ services:
       - CELERY_RESULT_BACKEND=redis://redis:6379/0
     expose:
       - "9000"
-    command: bash -c "python manage.py migrate && gunicorn transcriber.wsgi --bind 0.0.0.0:9000 --workers 3 --threads 3"
+    command: bash -c "python manage.py collectstatic --noinput && python manage.py migrate && gunicorn transcriber.wsgi --bind 0.0.0.0:9000 --workers 3 --threads 3 --reload"
     volumes:
       - .:/app
       - static_volume:/app/staticfiles

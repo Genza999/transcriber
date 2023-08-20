@@ -162,6 +162,13 @@ h6 span{
   color: aquamarine;
 }
 
+.error {
+  color: red;
+}
+
+[v-cloak] {
+  display: none !important;
+}
 
 .form-group{ 
   position: relative;

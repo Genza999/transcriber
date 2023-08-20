@@ -24,4 +24,4 @@ COPY . /app/
 COPY /transcribe/cipher.py /usr/local/lib/python3.10/site-packages/pytube/
 
 # Collect static files
-RUN python manage.py collectstatic --no-input
+RUN python manage.py collectstatic --noinput

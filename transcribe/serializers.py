@@ -18,6 +18,7 @@ class TranscribeSerializer(serializers.ModelSerializer):
         )
 
     def validate(self, attrs):
+        # Validate that the link is a youtube link
         if not youtube_link_format.match(attrs.get("link")):
             raise serializers.ValidationError("Invalid Youtube URL")
 

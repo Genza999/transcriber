@@ -15,16 +15,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from transcribe.views import index
 
 # from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-
-from transcribe.views import index, Transcribe
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", index),
-    path("api/v1/transcribe", Transcribe.as_view({"post": "create"})),
+    path("api/", include("transcribe.urls")),
 ]
 # urlpatterns += (
 #     staticfiles_urlpatterns()

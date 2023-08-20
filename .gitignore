@@ -64,13 +64,6 @@ docs/_build/
 *.nvimrc
 .vscode/
 
-# KiWi specific
-kiwi/apps/ecatalog/media/ecatalog/product/
-kiwi.dmp
-.pytest_cache
-.sentryclirc
-conf/dev/nginx.dev.conf
-
 # Local ignore
 staticfiles/
 media/
